@@ -1,0 +1,26 @@
+{% extends 'administrator/base.html' %}
+
+{% block content %}
+    <!-- no additional media querie or css is required -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        {% include 'administrator/includes/form_errors.html' %}
+                        <form action="" method="POST">
+                            {{ form.csrf_token }}
+                            <div class="form-group">
+                                {{ form.email(class='form-control', placeholder='email') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password(class='form-control', placeholder='password') }}
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

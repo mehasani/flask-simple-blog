@@ -1,0 +1,22 @@
+{% extends 'front/base.html' %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block content %}
+    <h3> home </h3>
+
+    <div class="card">
+        {% for article in articles %}
+            <a href="{{ url_for('post.detail',article_id=article.id) }}" class="card-body">{{ article.title }}</a>
+        {% endfor %}
+    </div>
+    {% if page > 1 %}
+        <a href="{{ url_for('home.home',page=page-1) }}">Previous</a>
+    {% endif %}
+    <span>Page {{ page }} of {{ total_pages }}</span>
+    {% if page < total_pages %}
+        <a href="{{ url_for('home.home',page=page+1) }}">Next</a>
+    {% endif %}
+{% endblock %}
